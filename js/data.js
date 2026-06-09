@@ -38,7 +38,7 @@ const siteData = {
 
       {
         src: "assets/about/about-4.jpg",
-        alt: "I got jawline",
+        alt: "Listening to LUHUT",
       },
     ],
   },
