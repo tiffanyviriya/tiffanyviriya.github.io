@@ -24,7 +24,7 @@ const siteData = {
     ],
     photos: [
       {
-        src: "assets/about/about-3.JPG",
+        src: "assets/about/about-3.jpg",
         alt: "Team Indonesia at ATxSummit 2026",
       },
       {
@@ -37,7 +37,7 @@ const siteData = {
       },
 
       {
-        src: "assets/about/about-4.JPG",
+        src: "assets/about/about-4.jpg",
         alt: "I got jawline",
       },
     ],
