@@ -11,15 +11,18 @@
     return el.innerHTML;
   }
 
-  function renderNav() {
+  function renderNav(page) {
+    const aboutHref = page === "home" ? "#about" : "index.html#about";
+    const brandHref = page === "home" ? "#" : "index.html";
+
     return `
       <header id="site-header" class="site-header">
         <nav class="site-nav container-main">
-          <a href="#about" class="nav-link">about</a>
-          <a href="#" class="nav-brand" aria-label="Back to top">
+          <a href="${aboutHref}" class="nav-link">about</a>
+          <a href="${brandHref}" class="nav-brand" aria-label="Back to home">
             · ${esc(siteConfig.name)} ·
           </a>
-          <a href="#works" class="nav-link">works</a>
+          <a href="works.html" class="nav-link${page === "works" ? " is-active" : ""}">works</a>
         </nav>
       </header>
     `;
@@ -255,15 +258,16 @@
     `;
   }
 
-  function renderWorks() {
+  function renderWorks(isStandalonePage = false) {
     const cards = works.map((w) => renderWorkCard(w)).join("");
+    const titleTag = isStandalonePage ? "h1" : "h2";
 
     return `
-      <section id="works" class="section works-section scroll-mt-nav">
+      <section id="works" class="section works-section${isStandalonePage ? " works-section--page" : " scroll-mt-nav"}">
         <div class="container-main">
           <div class="reveal">
             <header class="works-header">
-              <h2>Selected works</h2>
+              <${titleTag}>Selected works</${titleTag}>
               <p class="works-header__desc">
                 Projects where I've worked on strategy, business development,
                 and cross-functional teams.
@@ -289,15 +293,17 @@
     `;
   }
 
-  function renderFooter() {
+  function renderFooter(page) {
     const year = new Date().getFullYear();
+    const aboutHref = page === "home" ? "#about" : "index.html#about";
+
     return `
       <footer class="site-footer">
         <div class="container-main">
           <div class="footer-row">
             <div class="footer-links">
-              <a href="#about" class="nav-link">about</a>
-              <a href="#works" class="nav-link">works</a>
+              <a href="${aboutHref}" class="nav-link">about</a>
+              <a href="works.html" class="nav-link${page === "works" ? " is-active" : ""}">works</a>
             </div>
             <div class="footer-links">
               <a href="${esc(siteConfig.instagram)}" target="_blank" rel="noopener noreferrer" class="nav-link">instagram</a>
@@ -312,16 +318,29 @@
   }
 
   function renderPage() {
+    const page = document.body.dataset.page === "works" ? "works" : "home";
+
+    if (page === "works") {
+      document.getElementById("root").innerHTML = `
+        ${renderNav(page)}
+        <main class="site-main">
+          ${renderWorks(true)}
+          ${renderCta()}
+        </main>
+        ${renderFooter(page)}
+      `;
+      return;
+    }
+
     document.getElementById("root").innerHTML = `
-      ${renderNav()}
+      ${renderNav(page)}
       <main class="site-main">
         ${renderHero()}
         ${renderServicesTicker()}
         ${renderAbout()}
-        ${renderWorks()}
         ${renderCta()}
       </main>
-      ${renderFooter()}
+      ${renderFooter(page)}
     `;
   }
 
@@ -360,7 +379,9 @@
     renderPage();
     initNavScroll();
     initScrollReveals();
-    initAboutPhotos();
+    if (document.body.dataset.page !== "works") {
+      initAboutPhotos();
+    }
   }
 
   if (document.readyState === "loading") {

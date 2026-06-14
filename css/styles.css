@@ -199,6 +199,10 @@ p {
   color: var(--color-ink);
 }
 
+.nav-link.is-active {
+  color: var(--color-ink);
+}
+
 .nav-link::after {
   content: "";
   position: absolute;
@@ -213,6 +217,10 @@ p {
 }
 
 .nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-link.is-active::after {
   transform: scaleX(1);
 }
 
@@ -666,6 +674,16 @@ p {
 
 .works-header {
   margin-bottom: 3.5rem;
+}
+
+.works-section--page {
+  padding-top: 8rem;
+}
+
+@media (min-width: 768px) {
+  .works-section--page {
+    padding-top: 10rem;
+  }
 }
 
 @media (min-width: 768px) {
