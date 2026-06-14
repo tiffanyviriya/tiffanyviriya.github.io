@@ -40,6 +40,46 @@ const siteData = {
         src: "assets/about/about-4.jpg",
         alt: "Listening to LUHUT",
       },
+      {
+        src: "assets/about/about-5.JPG",
+        alt: "MC event TEDxITB",
+      },
+      {
+        src: "assets/about/about-6.JPG",
+        alt: "Won a Business Case Competition!",
+      },
+      {
+        src: "assets/about/about-7.JPG",
+        alt: "At Harvard Hackathon 2026",
+      },
+      {
+        src: "assets/about/about-8.JPG",
+        alt: "Won Hackfest 2026 as The Best Team",
+      },
+      {
+        src: "assets/about/about-9.JPG",
+        alt: "Around ATxSummit!",
+      },
+      {
+        src: "assets/about/about-10.JPG",
+        alt: "Gebrak family",
+      },
+      {
+        src: "assets/about/about-11.JPG",
+        alt: "Volunteering event",
+      },
+      {
+        src: "assets/about/about-12.PNG",
+        alt: "AWS Event",
+      },
+      {
+        src: "assets/about/about-13.JPG",
+        alt: "Sapa Rektor MWA-WM!",
+      },
+      {
+        src: "assets/about/about-14.JPG",
+        alt: "Recording TEDx teaser",
+      },
     ],
   },
 
@@ -152,9 +192,29 @@ const siteData = {
       category: ["ai", "healthcare"],
       year: "2026",
       description:
-        "An AI-powered ADHD relapse prevention and early warning app.",
+        "Cognify adalah platform digital untuk membantu penderita ADHD menjaga rutinitas dan mencegah relapse secara lebih terstruktur. Platform ini memantau kondisi harian, mengenali pola penurunan fokus, lalu memberi rekomendasi aktivitas yang sesuai agar pengguna lebih mudah kembali produktif.",
       cover: "assets/works/cognify.png",
-      liveUrl: "https://github.com/",
+      liveUrl: "https://github.com/jsndwrd/Cognify",
+    },
+    {
+      slug: "virens",
+      title: "Virens",
+      category: ["carbon", "sustainability"],
+      year: "2026",
+      description:
+        "Virens adalah solusi berbasis carbon management yang membantu perusahaan memantau, menghitung, dan mengurangi emisi karbon secara lebih terstruktur. Platform ini dapat mencatat sumber emisi, menganalisis jejak karbon dari aktivitas operasional, serta memberikan rekomendasi strategi pengurangan emisi agar perusahaan bisa menjalankan bisnis yang lebih berkelanjutan dan siap memenuhi kebutuhan pelaporan ESG.",
+      cover: "assets/works/virens.png",
+      liveUrl: "https://github.com/ShibainuID/Virens",
+    },
+    {
+      slug: "scresh",
+      title: "Scresh",
+      category: ["product", "innovation"],
+      year: "2026",
+      description:
+        "Scresh adalah platform SaaS untuk membantu koperasi dan pengelola cold storage memantau stok sayuran secara lebih rapi dan akurat. Sistem ini mencatat batch barang masuk, menilai kualitas dan kesegaran produk dengan AI, mengatur prioritas penyimpanan atau penjualan, serta memberi alert agar potensi food waste bisa dikurangi.",
+      cover: "assets/works/scresh.png",
+      liveUrl: "https://github.com/ShibainuID/Scresh",
     },
   ],
 };

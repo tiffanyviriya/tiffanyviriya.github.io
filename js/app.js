@@ -121,7 +121,12 @@
   ];
 
   function collagePlacementForIndex(i) {
-    return collagePositionSlots[i % collagePositionSlots.length];
+    const cycle = Math.floor(i / collagePositionSlots.length);
+    const slot = collagePositionSlots[i % collagePositionSlots.length];
+    return {
+      ...slot,
+      row: slot.row + cycle * 2,
+    };
   }
 
   function collageRowCount(total) {
@@ -140,12 +145,14 @@
   }
 
   function collageTop(placement) {
-    if (placement.row === 0) {
-      return placement.col === 1 ? "var(--collage-col-lift)" : "0";
-    }
+    const rowTop =
+      placement.row === 0
+        ? "0px"
+        : `calc(${placement.row} * (var(--collage-photo-h) - var(--collage-overlap)))`;
+
     return placement.col === 1
-      ? "calc(var(--collage-photo-h) - var(--collage-overlap) + var(--collage-col-lift))"
-      : "calc(var(--collage-photo-h) - var(--collage-overlap))";
+      ? `calc(${rowTop} + var(--collage-col-lift))`
+      : rowTop;
   }
 
   function collagePhotoStyle(i, total) {
@@ -161,6 +168,18 @@
   function renderAboutPhotos() {
     return bio.photos
       .map((photo, i) => {
+        if (photo.type === "quote") {
+          return `
+        <figure
+          class="about-quote"
+          style="${collagePhotoStyle(i, bio.photos.length)}"
+        >
+          <blockquote class="about-quote__text">${esc(photo.quote)}</blockquote>
+          <figcaption class="about-quote__author">- ${esc(photo.author)}</figcaption>
+        </figure>
+      `;
+        }
+
         const caption = esc(
           photo.caption ??
             photo.alt ??
@@ -204,6 +223,7 @@
         <div class="container-main">
           <div class="about-grid reveal">
             <div class="about-content">
+              <h2 class="about-heading">About</h2>
               ${paragraphs}
 
               <div class="about-block">
@@ -218,6 +238,7 @@
             </div>
 
             <div class="about-collage-wrap">
+              <h3 class="moments-heading">Moments</h3>
               <div class="about-collage" style="--collage-rows:${collageRowCount(bio.photos.length)}">${renderAboutPhotos()}</div>
             </div>
           </div>
@@ -232,7 +253,7 @@
         <div class="work-card__visual" tabindex="0">
           <div class="work-card__face">
             <img
-              class="work-card__cover"
+              class="work-card__cover${work.imageFit === "contain" ? " work-card__cover--contain" : ""}"
               src="${asset(work.cover)}"
               alt="${esc(work.title)}"
               loading="lazy"
@@ -274,6 +295,14 @@
               </p>
             </header>
             <div class="works-grid">${cards}</div>
+            <blockquote class="works-quote">
+              <p>Success is a lousy teacher. It seduces smart people into thinking they can't lose.</p>
+              <cite>- Bill Gates</cite>
+            </blockquote>
+            <figure class="favorite-food">
+              <img src="${asset("assets/about/about-15.JPG")}" alt="My favorite food!" loading="lazy">
+              <figcaption>My favorite food!</figcaption>
+            </figure>
           </div>
         </div>
       </section>
