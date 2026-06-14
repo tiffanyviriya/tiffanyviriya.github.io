@@ -159,7 +159,7 @@ const siteData = {
       year: "2025",
     },
     {
-      title: "Top 150 Nationally",
+      title: "Top 22 Nationally",
       org: "StudentsCatalyst Fellowship",
       year: "2025",
     },
