@@ -29,7 +29,7 @@ const siteData = {
       },
       {
         src: "assets/about/about-1.jpeg",
-        alt: "with HMIF ITB",
+        alt: "Keluarga HMIF ITB",
       },
       {
         src: "assets/about/about-2.jpeg",
