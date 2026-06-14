@@ -25,7 +25,7 @@ const siteData = {
     photos: [
       {
         src: "assets/about/about-3.jpg",
-        alt: "Team Indonesia at ATxSummit 2026",
+        alt: "Team Shibainu at ATxSummit 2026",
       },
       {
         src: "assets/about/about-1.jpeg",
